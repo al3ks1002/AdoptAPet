@@ -67,7 +67,7 @@ void Tests::test_repository() {
     assert(w.get_size_list() == 3);
 
     w.add_adoption(d3);
-    Vector<Dog> z = w.get_adopted();
+    std::vector<Dog> z = w.get_adopted();
     assert(z.size() == 1);
     assert(z[0].get_name() == "Hachi");
 

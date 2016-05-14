@@ -6,6 +6,7 @@
 #define ADOPTAPET_PLAYLIST_H
 
 
+#include <vector>
 #include "Dog.h"
 #include "Vector.h"
 
@@ -20,7 +21,7 @@ public:
      * Sets the available dogs for adoption.
      * Input: dogs - Vector<Dog>
      */
-    void set_available(const Vector<Dog>& dogs);
+    void set_available(const std::vector<Dog>& dogs);
 
     /**
      * Getter for the size of the list.
@@ -44,7 +45,7 @@ public:
     void remove_current();
 
 private:
-    Vector<Dog> available_dogs;
+    std::vector<Dog> available_dogs;
     int current;
 };
 

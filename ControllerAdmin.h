@@ -45,7 +45,7 @@ public:
     /**
      * Returns the vector of dogs from the repository.
      */
-    Vector<Dog> get_all();
+    std::vector<Dog> get_all();
 
 private:
     RepositoryAdmin& repository;

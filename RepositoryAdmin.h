@@ -5,6 +5,7 @@
 #ifndef ADOPTAPET_REPOSITORY_H
 #define ADOPTAPET_REPOSITORY_H
 
+#include <vector>
 
 #include "Vector.h"
 #include "Dog.h"
@@ -19,7 +20,7 @@ public:
     /**
      * Returns the Vector of dogs.
      */
-    Vector<Dog> get_dogs();
+    std::vector<Dog> get_dogs();
 
     /**
      * Finds a dog in the repository.
@@ -52,7 +53,7 @@ public:
     int update(const Dog& dog, const Dog& new_dog);
 
 private:
-    Vector<Dog> dogs;
+    std::vector<Dog> dogs;
 };
 
 

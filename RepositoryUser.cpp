@@ -2,9 +2,10 @@
 // Created by alex on 04.04.2016.
 //
 
+#include <vector>
 #include "RepositoryUser.h"
 
-void RepositoryUser::set_list(const Vector<Dog>& dogs) {
+void RepositoryUser::set_list(const std::vector<Dog>& dogs) {
     this->dog_list.set_available(dogs);
 }
 
@@ -25,10 +26,10 @@ void RepositoryUser::remove_current() {
 }
 
 void RepositoryUser::add_adoption(const Dog& dog) {
-    this->adoption_list.add(dog);
+    this->adoption_list.push_back(dog);
 }
 
-Vector<Dog> RepositoryUser::get_adopted() {
+std::vector<Dog> RepositoryUser::get_adopted() {
     return this->adoption_list;
 }
 

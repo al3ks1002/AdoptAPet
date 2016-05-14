@@ -187,7 +187,7 @@ void UI::update() {
 }
 
 void UI::show_all() {
-    Vector<Dog> dogs = this->controller_admin.get_all();
+    std::vector<Dog> dogs = this->controller_admin.get_all();
     if (dogs.size() == 0)
         std::cout << "There aren't any dogs!\n";
     else {
@@ -209,7 +209,7 @@ void UI::see_filtered() {
 }
 
 void UI::see_adopted() {
-    Vector<Dog> adopted = this->controller_user.get_adopted();
+    std::vector<Dog> adopted = this->controller_user.get_adopted();
     if (adopted.size() == 0)
         std::cout << "There aren't any dogs!\n";
     else {

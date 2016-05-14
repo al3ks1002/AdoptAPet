@@ -26,7 +26,7 @@ public:
      * Gets all the available dogs.
      * Return: dogs - Vector<Dog>
      */
-    Vector<Dog> get_all();
+    std::vector<Dog> get_all();
 
     /**
      * Gets the size of the list that contains the available dogs.
@@ -55,7 +55,7 @@ public:
      * Gets the adopted dogs list.
      * Return: dogs - Vector<Dog>
      */
-    Vector<Dog> get_adopted();
+    std::vector<Dog> get_adopted();
 
     /**
      * Sets the list of available dogs with filtered dogs by breed and age.

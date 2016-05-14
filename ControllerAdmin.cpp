@@ -23,7 +23,7 @@ int ControllerAdmin::update(int age, std::string breed, std::string name, int ne
     return this->repository.update(dog, new_dog);
 }
 
-Vector<Dog> ControllerAdmin::get_all() {
+std::vector<Dog> ControllerAdmin::get_all() {
     return this->repository.get_dogs();
 }
 

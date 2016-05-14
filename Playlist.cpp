@@ -5,7 +5,7 @@
 #include "Playlist.h"
 
 
-void Playlist::set_available(const Vector<Dog>& dogs) {
+void Playlist::set_available(const std::vector<Dog>& dogs) {
     this->available_dogs = dogs;
     this->current = 0;
 }
@@ -28,7 +28,7 @@ void Playlist::remove_current() {
     if (this->current == this->available_dogs.size() - 1)
         this->current = 0;
 
-    this->available_dogs.remove(this->current);
+    this->available_dogs.erase(this->available_dogs.begin() + this->current);
 }
 
 

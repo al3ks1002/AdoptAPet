@@ -19,7 +19,7 @@ public:
      * Sets the list that contains the available dogs.
      * Input: dogs - Vector<Dog>
      */
-    void set_list(const Vector<Dog>& dogs);
+    void set_list(const std::vector<Dog>& dogs);
 
     /**
      * Gets the size of the available dogs list.
@@ -51,11 +51,11 @@ public:
      * Returns the list of adopted dogs.
      * Return: dogs - Vector<Dog>
      */
-    Vector<Dog> get_adopted();
+    std::vector<Dog> get_adopted();
 
 private:
     Playlist dog_list;
-    Vector<Dog> adoption_list;
+    std::vector<Dog> adoption_list;
 };
 
 
