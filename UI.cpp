@@ -231,10 +231,10 @@ void UI::run_playlist() {
         std::cout << '\n' << current_dog.get_breed() << " | " << current_dog.get_name() << " | " <<
         current_dog.get_age() << '\n';
 
-        std::string command = "xdg-open ";
-        command += current_dog.get_photo();
-        command += " > /dev/null";
-        system(command.c_str());
+        std::string shell = "xdg-open ";
+        shell += current_dog.get_photo();
+        shell += " > /dev/null";
+        system(shell.c_str());
 
         bool cycle = 1;
         while (cycle) {

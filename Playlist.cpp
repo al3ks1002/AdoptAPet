@@ -11,7 +11,7 @@ void Playlist::set_available(const std::vector<Dog>& dogs) {
 }
 
 int Playlist::get_size_list() {
-    return this->available_dogs.size();
+    return (int)this->available_dogs.size();
 }
 
 Dog Playlist::get_current() {
