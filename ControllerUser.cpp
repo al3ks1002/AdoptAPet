@@ -39,9 +39,9 @@ void ControllerUser::set_filtered_list(const std::string& breed, int age) {
     std::vector<Dog> all = this->get_all();
     std::vector<Dog> filtered{};
 
-    for (int i = 0; i < all.size(); i++)
-        if ((all[i].get_breed() == breed || breed == "") && all[i].get_age() <= age)
-            filtered.push_back(all[i]);
+    for (auto dog : all)
+        if ((dog.get_breed() == breed || breed == "") && dog.get_age() <= age)
+            filtered.push_back(dog);
 
     this->repo_user.set_list(filtered);
 }

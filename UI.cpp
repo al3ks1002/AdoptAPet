@@ -191,8 +191,9 @@ void UI::show_all() {
     if (dogs.size() == 0)
         std::cout << "There aren't any dogs!\n";
     else {
-        for (int i = 0; i < dogs.size(); i++)
-            std::cout << dogs[i].get_breed() << " | " << dogs[i].get_name() << " | " << dogs[i].get_age() << '\n';
+        for (auto dog : dogs) {
+            std::cout << dog.get_breed() << " | " << dog.get_name() << " | " << dog.get_age() << '\n';
+        }
     }
 }
 
@@ -213,9 +214,9 @@ void UI::see_adopted() {
     if (adopted.size() == 0)
         std::cout << "There aren't any dogs!\n";
     else {
-        for (int i = 0; i < adopted.size(); i++)
-            std::cout << adopted[i].get_breed() << " | " << adopted[i].get_name() << " | " << adopted[i].get_age() <<
-            '\n';
+        for (auto dog : adopted) {
+            std::cout << dog.get_breed() << " | " << dog.get_name() << " | " << dog.get_age() << '\n';
+        }
     }
 }
 
