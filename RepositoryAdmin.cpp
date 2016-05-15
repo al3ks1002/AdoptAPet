@@ -27,6 +27,7 @@ bool RepositoryAdmin::add(const Dog& dog) {
         return 0;
 
     this->dogs.push_back(dog);
+    this->write_to_file();
     return 1;
 }
 
@@ -41,6 +42,7 @@ bool RepositoryAdmin::remove(const Dog& dog) {
         return 0;
 
     this->dogs.erase(this->dogs.begin() + position);
+    this->write_to_file();
     return 1;
 }
 
@@ -54,6 +56,7 @@ int RepositoryAdmin::update(const Dog& dog, const Dog& new_dog) {
         return 0;
 
     this->dogs[position] = new_dog;
+    this->write_to_file();
     return 1;
 }
 
@@ -65,7 +68,7 @@ void RepositoryAdmin::write_to_file() {
     std::ofstream fout(this->filename);
 
     for (Dog dog: dogs) {
-        fout << dog;
+        fout << dog << '\n';
     }
 
     fout.close();
