@@ -3,8 +3,24 @@
 //
 
 #include <algorithm>
+#include <fstream>
+#include <iostream>
 #include "RepositoryAdmin.h"
 
+RepositoryAdmin::RepositoryAdmin() { }
+
+RepositoryAdmin::RepositoryAdmin(std::string filename) {
+    this->filename = filename;
+
+    std::ifstream fin(filename);
+    Dog new_dog;
+    while (fin >> new_dog) {
+        dogs.push_back(new_dog);
+        std::cout << new_dog.get_name() << std::endl;
+    }
+
+    fin.close();
+}
 
 bool RepositoryAdmin::add(const Dog& dog) {
     if (this->find(dog) < this->dogs.size())
@@ -45,13 +61,12 @@ std::vector<Dog> RepositoryAdmin::get_dogs() {
     return this->dogs;
 }
 
+void RepositoryAdmin::write_to_file() {
+    std::ofstream fout(this->filename);
 
+    for (Dog dog: dogs) {
+        fout << dog;
+    }
 
-
-
-
-
-
-
-
-
+    fout.close();
+}

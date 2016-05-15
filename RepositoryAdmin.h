@@ -13,9 +13,14 @@
 class RepositoryAdmin {
 public:
     /**
-     * Constructor.
+     * Default constructor.
      */
-    RepositoryAdmin() { };
+    RepositoryAdmin();
+
+    /*
+     * Constructor with filename.
+     */
+    RepositoryAdmin(std::string filename);
 
     /**
      * Returns the Vector of dogs.
@@ -54,6 +59,9 @@ public:
 
 private:
     std::vector<Dog> dogs;
+    std::string filename;
+
+    void write_to_file();
 };
 
 

@@ -192,7 +192,7 @@ void UI::show_all() {
         std::cout << "There aren't any dogs!\n";
     else {
         for (auto dog : dogs) {
-            std::cout << dog.get_breed() << " | " << dog.get_name() << " | " << dog.get_age() << '\n';
+            std::cout << dog << '\n';
         }
     }
 }
@@ -215,7 +215,7 @@ void UI::see_adopted() {
         std::cout << "There aren't any dogs!\n";
     else {
         for (auto dog : adopted) {
-            std::cout << dog.get_breed() << " | " << dog.get_name() << " | " << dog.get_age() << '\n';
+            std::cout << dog << '\n';
         }
     }
 }

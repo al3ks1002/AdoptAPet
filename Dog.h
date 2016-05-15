@@ -54,6 +54,16 @@ public:
         return this->age == that.get_age() && this->breed == that.get_breed() && this->name == that.get_name();
     }
 
+    /*
+     * Overload for the >> operator.
+     */
+    friend std::istream& operator>>(std::istream& stream, Dog& dog);
+
+    /*
+     * Overload for the << operator.
+     */
+    friend std::ostream& operator<<(std::ostream& stream, const Dog& dog);
+
 private:
     int age;
     std::string breed;
