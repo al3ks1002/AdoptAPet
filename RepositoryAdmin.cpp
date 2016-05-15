@@ -13,10 +13,10 @@ RepositoryAdmin::RepositoryAdmin(std::string filename) {
     this->filename = filename;
 
     std::ifstream fin(filename);
+
     Dog new_dog;
     while (fin >> new_dog) {
         dogs.push_back(new_dog);
-        std::cout << new_dog.get_name() << std::endl;
     }
 
     fin.close();
