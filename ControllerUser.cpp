@@ -2,6 +2,7 @@
 // Created by alex on 04.04.2016.
 //
 
+#include <algorithm>
 #include "ControllerUser.h"
 
 void ControllerUser::set_list() {
@@ -37,11 +38,12 @@ std::vector<Dog> ControllerUser::get_adopted() {
 
 void ControllerUser::set_filtered_list(const std::string& breed, int age) {
     std::vector<Dog> all = this->get_all();
-    std::vector<Dog> filtered{};
+    std::vector<Dog> filtered(all.size());
 
-    for (auto dog : all)
-        if ((dog.get_breed() == breed || breed == "") && dog.get_age() <= age)
-            filtered.push_back(dog);
+    auto it = std::copy_if(all.begin(), all.end(), filtered.begin(), [breed, age](Dog dog) {
+        return ((dog.get_breed() == breed || breed == "") && dog.get_age() <= age);
+    });
+    filtered.resize(std::distance(filtered.begin(), it));
 
     this->repo_user.set_list(filtered);
 }
