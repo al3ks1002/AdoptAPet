@@ -133,6 +133,10 @@ void Vector<T>::update(int position, const T& new_elem) {
 
 template<typename T>
 Vector<T>& Vector<T>::operator=(const Vector<T>& that) {
+    if (this == &that) {
+        return *this;
+    }
+
     this->sz = that.sz;
     this->capacity = that.capacity;
 
@@ -140,6 +144,8 @@ Vector<T>& Vector<T>::operator=(const Vector<T>& that) {
     this->list = new T[this->capacity];
     for (int i = 0; i < this->sz; i++)
         this->list[i] = that.list[i];
+
+    return *this;
 }
 
 template<typename T>
