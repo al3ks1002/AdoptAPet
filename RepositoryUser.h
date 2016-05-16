@@ -7,13 +7,14 @@
 
 
 #include "Playlist.h"
+#include "AdoptionList.h"
 
 class RepositoryUser {
 public:
     /**
      * Default constructor for RepositoryUser.
      */
-    RepositoryUser() { };
+    RepositoryUser(AdoptionList* adoption_list);
 
     /**
      * Sets the list that contains the available dogs.
@@ -53,9 +54,14 @@ public:
      */
     std::vector<Dog> get_adopted();
 
+    /*
+     * Shows the adoption list (csv or html).
+     */
+    void show_adopted();
+
 private:
     Playlist dog_list;
-    std::vector<Dog> adoption_list;
+    AdoptionList* adoption_list;
 };
 
 

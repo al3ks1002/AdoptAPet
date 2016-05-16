@@ -16,6 +16,12 @@ public:
 
     void run_UI();
 
+    static int read_integer(const std::string& message, int min_value, int max_value);
+
+    static std::string read_nonempty_string(const std::string& message);
+
+    static std::string read_string(const std::string& message);
+
 private:
     ControllerAdmin controller_admin;
     ControllerUser controller_user;
@@ -44,15 +50,9 @@ private:
 
     void see_filtered();
 
-    void see_adopted();
+    void show_adopted();
 
     void run_playlist();
-
-    int read_integer(const std::string& message, int min_value, int max_value);
-
-    std::string read_nonempty_string(const std::string& message);
-
-    std::string read_string(const std::string& message);
 };
 
 

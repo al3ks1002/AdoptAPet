@@ -3,18 +3,20 @@
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/ControllerUser.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Tests.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Utils.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Validator.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/RepositoryUser.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Validator.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ControllerUser.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/AdoptionList.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ControllerAdmin.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ControllerAdmin.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Vector.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/RepositoryUser.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/CustomException.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Dog.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/RepositoryAdmin.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Dog.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/CMakeLists.txt" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/UI.cpp" isTestSource="false" />
@@ -24,8 +26,8 @@
       <sourceFolder url="file://$MODULE_DIR$/Playlist.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Utils.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Playlist.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/RepositoryAdmin.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/CustomException.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/AdoptionList.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Tests.h" isTestSource="false" />
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module-library">

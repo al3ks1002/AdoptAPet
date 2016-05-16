@@ -48,6 +48,9 @@ void ControllerUser::set_filtered_list(const std::string& breed, int age) {
     this->repo_user.set_list(filtered);
 }
 
+void ControllerUser::show_adopted() {
+    this->repo_user.show_adopted();
+}
 
 
 

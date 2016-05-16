@@ -5,6 +5,10 @@
 #include <vector>
 #include "RepositoryUser.h"
 
+RepositoryUser::RepositoryUser(AdoptionList* adoption_list) {
+    this->adoption_list = adoption_list;
+}
+
 void RepositoryUser::set_list(const std::vector<Dog>& dogs) {
     this->dog_list.set_available(dogs);
 }
@@ -26,11 +30,17 @@ void RepositoryUser::remove_current() {
 }
 
 void RepositoryUser::add_adoption(const Dog& dog) {
-    this->adoption_list.push_back(dog);
+    this->adoption_list->add(dog);
 }
 
 std::vector<Dog> RepositoryUser::get_adopted() {
-    return this->adoption_list;
+    return this->adoption_list->get_dogs();
 }
+
+void RepositoryUser::show_adopted() {
+    this->adoption_list->show_adopted();
+}
+
+
 
 

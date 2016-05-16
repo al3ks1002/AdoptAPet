@@ -63,6 +63,11 @@ public:
      */
     void set_filtered_list(const std::string& breed, int age);
 
+    /*
+     * Shows the adoption list (csv or html).
+     */
+    void show_adopted();
+
 private:
     RepositoryAdmin& repo_admin;
     RepositoryUser& repo_user;

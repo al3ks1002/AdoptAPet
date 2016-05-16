@@ -149,7 +149,7 @@ void UI::run_user() {
                 this->see_filtered();
                 break;
             case 3:
-                this->see_adopted();
+                this->show_adopted();
                 break;
             default:
                 std::cout << "Invalid command!\n";
@@ -225,15 +225,8 @@ void UI::see_filtered() {
     this->run_playlist();
 }
 
-void UI::see_adopted() {
-    std::vector<Dog> adopted = this->controller_user.get_adopted();
-    if (adopted.size() == 0)
-        std::cout << "There aren't any dogs!\n";
-    else {
-        for (auto dog : adopted) {
-            std::cout << dog << '\n';
-        }
-    }
+void UI::show_adopted(){
+    this->controller_user.show_adopted();
 }
 
 void UI::run_playlist() {
