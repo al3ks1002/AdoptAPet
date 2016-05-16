@@ -50,6 +50,8 @@ private:
 
     int read_integer(const std::string& message, int min_value, int max_value);
 
+    std::string read_nonempty_string(const std::string& message);
+
     std::string read_string(const std::string& message);
 };
 

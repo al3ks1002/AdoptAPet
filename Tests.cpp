@@ -9,6 +9,7 @@
 #include "RepositoryAdmin.h"
 #include "ControllerAdmin.h"
 #include "RepositoryUser.h"
+#include "CustomException.h"
 
 void Tests::run_tests() {
     test_vector();
@@ -47,20 +48,34 @@ void Tests::test_repository() {
     Dog d4{1, "Shepard", "Derek", "link4"};
     Dog d5{3, "Husky", "Min", "link5"};
 
-    assert(v.add(d1) == 1);
-    assert(v.add(d2) == 1);
-    assert(v.add(d3) == 1);
-    assert(v.add(d4) == 1);
-    assert(v.add(d5) == 1);
+    v.add(d1);
+    v.add(d2);
+    v.add(d3);
+    v.add(d4);
+    v.add(d5);
+    assert(v.get_dogs().size() == 5);
 
-    assert(v.add(d1) == 0);
-    assert(v.remove(d1) == 1);
-    assert(v.remove(d1) == 0);
-    assert(v.remove(d2) == 1);
+    try {
+        v.add(d1);
+        assert(false);
+    } catch (OperationException& e) { }
 
-    assert(v.update(d1, d3) == -1);
-    assert(v.update(d3, d4) == 0);
-    assert(v.update(d3, d1) == 1);
+    v.remove(d1);
+    try {
+        v.remove(d1);
+        assert(false);
+    } catch (OperationException& e) { }
+    v.remove(d2);
+
+    try {
+        v.update(d1, d3);
+        assert(false);
+    } catch (OperationException& e) { }
+    try {
+        v.update(d3, d4);
+        assert(false);
+    } catch (OperationException& e) { }
+    v.update(d3, d1);
 
     RepositoryUser w;
     w.set_list(v.get_dogs());
@@ -80,14 +95,24 @@ void Tests::test_controller() {
     RepositoryAdmin v;
     ControllerAdmin c{v};
 
-    assert(c.add(1, "Pitbull", "Rex", "link1") == 1);
-    assert(c.add(1, "Pitbull", "Rex", "link1") == 0);
-    assert(c.remove(1, "Pitbull", "Rex") == 1);
-    assert(c.remove(1, "Pitbull", "Rex") == 0);
+    c.add(1, "Pitbull", "Rex", "link1");
+    try {
+        c.add(1, "Pitbull", "Rex", "link1");
+        assert(false);
+    } catch (OperationException& e) { }
 
-    assert(c.add(1, "Pitbull", "Rex", "link1") == 1);
-    assert(c.update(1, "Pitbull", "Rex", 2, "Husky", "Max", "link2") == 1);
-    assert(c.update(1, "Pitbull", "Rex", 2, "Husky", "Max", "link2") == -1);
+    c.remove(1, "Pitbull", "Rex");
+    try {
+        c.remove(1, "Pitbull", "Rex");
+        assert(false);
+    } catch (OperationException& e) { }
+
+    c.add(1, "Pitbull", "Rex", "link1");
+    c.update(1, "Pitbull", "Rex", 2, "Husky", "Max", "link2");
+    try {
+        c.update(1, "Pitbull", "Rex", 2, "Husky", "Max", "link2");
+        assert(false);
+    } catch (OperationException& e) { }
 }
 
 

@@ -4,6 +4,8 @@
 
 #include "UI.h"
 #include "Utils.h"
+#include "CustomException.h"
+#include "Validator.h"
 
 #include <iostream>
 
@@ -48,20 +50,33 @@ int UI::read_integer(const std::string& message, int min_value, int max_value) {
         std::cout << message;
         std::getline(std::cin, number_str);
 
-        int number = 0;
-        if (Utils::valid_number(number_str)) {
-            number = Utils::get_int(number_str);
-            if (number >= min_value && number <= max_value)
-                return number;
-            std::cout << "The integer is not in range!\n";
-        } else
-            std::cout << "That's not an integer!\n";
+        try {
+            int number = Validator::valid_number(number_str, min_value, max_value);
+            return number;
+        } catch (DataException& e) {
+            std::cout << e.what() << '\n';
+        }
+    }
+}
+
+std::string UI::read_nonempty_string(const std::string& message) {
+    std::string str;
+    while (1) {
+        std::cout << message;
+        std::getline(std::cin, str);
+
+        try {
+            str = Validator::valid_string(str);
+            return str;
+        } catch (DataException& e) {
+            std::cout << e.what() << '\n';
+        }
     }
 }
 
 std::string UI::read_string(const std::string& message) {
-    std::cout << message;
     std::string str;
+    std::cout << message;
     std::getline(std::cin, str);
     return str;
 }
@@ -143,47 +158,48 @@ void UI::run_user() {
 }
 
 void UI::add() {
-    std::string breed = read_string("Enter the breed: ");
-    std::string name = read_string("Enter the name: ");
+    std::string breed = read_nonempty_string("Enter the breed: ");
+    std::string name = read_nonempty_string("Enter the name: ");
     int age = read_integer("Enter the age: ", 0, 100);
-    std::string photo = read_string("Enter the link to the photo: ");
+    std::string photo = read_nonempty_string("Enter the link to the photo: ");
 
-    bool added = this->controller_admin.add(age, breed, name, photo);
-    if (added)
-        std::cout << "Added successfully!\n";
-    else
-        std::cout << "Duplicate dog!\n";
+    try {
+        this->controller_admin.add(age, breed, name, photo);
+        std::cout << "The dog was successfully added!" << '\n';
+    } catch (OperationException& e) {
+        std::cout << e.what() << '\n';
+    }
 }
 
 void UI::remove() {
-    std::string breed = read_string("Enter the breed: ");
-    std::string name = read_string("Enter the name: ");
+    std::string breed = read_nonempty_string("Enter the breed: ");
+    std::string name = read_nonempty_string("Enter the name: ");
     int age = read_integer("Enter the age: ", 0, 100);
 
-    bool removed = this->controller_admin.remove(age, breed, name);
-    if (removed)
-        std::cout << "Deleted successfully!\n";
-    else
-        std::cout << "Can't find the dog!\n";
+    try {
+        this->controller_admin.remove(age, breed, name);
+        std::cout << "The dog was successfully deleted!" << '\n';
+    } catch (OperationException& e) {
+        std::cout << e.what() << '\n';
+    }
 }
 
 void UI::update() {
-    std::string breed = read_string("Enter the breed: ");
-    std::string name = read_string("Enter the name: ");
+    std::string breed = read_nonempty_string("Enter the breed: ");
+    std::string name = read_nonempty_string("Enter the name: ");
     int age = read_integer("Enter the age: ", 0, 100);
 
-    std::string new_breed = read_string("Enter the breed: ");
-    std::string new_name = read_string("Enter the name: ");
+    std::string new_breed = read_nonempty_string("Enter the breed: ");
+    std::string new_name = read_nonempty_string("Enter the name: ");
     int new_age = read_integer("Enter the age: ", 0, 100);
-    std::string new_photo = read_string("Enter the link to the photo: ");
+    std::string new_photo = read_nonempty_string("Enter the link to the photo: ");
 
-    int updated = this->controller_admin.update(age, breed, name, new_age, new_breed, new_name, new_photo);
-    if (updated == -1)
-        std::cout << "Can't find the dog!\n";
-    else if (updated == 0)
-        std::cout << "Duplicate dog!\n";
-    else
-        std::cout << "Updated successfully!\n";
+    try {
+        this->controller_admin.update(age, breed, name, new_age, new_breed, new_name, new_photo);
+        std::cout << "The dog was successfully updated!" << '\n';
+    } catch (OperationException& e) {
+        std::cout << e.what() << '\n';
+    }
 }
 
 void UI::show_all() {

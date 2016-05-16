@@ -11,6 +11,7 @@
 class Utils {
 public:
     static bool valid_number(const std::string& str);
+
     static int get_int(const std::string& str);
 };
 

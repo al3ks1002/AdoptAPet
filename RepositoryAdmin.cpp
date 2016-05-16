@@ -6,6 +6,7 @@
 #include <fstream>
 #include <iostream>
 #include "RepositoryAdmin.h"
+#include "CustomException.h"
 
 RepositoryAdmin::RepositoryAdmin() { }
 
@@ -22,42 +23,43 @@ RepositoryAdmin::RepositoryAdmin(std::string filename) {
     fin.close();
 }
 
-bool RepositoryAdmin::add(const Dog& dog) {
-    if (this->find(dog) < this->dogs.size())
-        return 0;
-
-    this->dogs.push_back(dog);
-    this->write_to_file();
-    return 1;
-}
-
 int RepositoryAdmin::find(const Dog& dog) {
     auto it = std::find(this->dogs.begin(), this->dogs.end(), dog);
     return it - this->dogs.begin();
 }
 
-bool RepositoryAdmin::remove(const Dog& dog) {
+void RepositoryAdmin::add(const Dog& dog) {
+    if (this->find(dog) < this->dogs.size()) {
+        throw OperationException("The dog is a duplicate!");
+    }
+
+    this->dogs.push_back(dog);
+    this->write_to_file();
+}
+
+void RepositoryAdmin::remove(const Dog& dog) {
     int position = this->find(dog);
-    if (position == this->dogs.size())
-        return 0;
+    if (position == this->dogs.size()) {
+        throw OperationException("Can't find the dog!");
+    }
 
     this->dogs.erase(this->dogs.begin() + position);
     this->write_to_file();
-    return 1;
 }
 
-int RepositoryAdmin::update(const Dog& dog, const Dog& new_dog) {
+void RepositoryAdmin::update(const Dog& dog, const Dog& new_dog) {
     int position = this->find(dog);
-    if (position == this->dogs.size())
-        return -1;
+    if (position == this->dogs.size()) {
+        throw OperationException("Can't find the dog!");
+    }
 
     int new_position = this->find(new_dog);
-    if (new_position != this->dogs.size() && new_position != position)
-        return 0;
+    if (new_position != this->dogs.size() && new_position != position) {
+        throw OperationException("The dog is a duplicate!");
+    }
 
     this->dogs[position] = new_dog;
     this->write_to_file();
-    return 1;
 }
 
 std::vector<Dog> RepositoryAdmin::get_dogs() {

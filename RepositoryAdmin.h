@@ -30,32 +30,30 @@ public:
     /**
      * Finds a dog in the repository.
      * Input: dog - Dog.
-     * Return: the position where the dog was found or -1 if it wasn't found.
+     * Return: the position where the dog was found or the size of the repository if it wasn't found.
      */
     int find(const Dog& dog);
 
     /**
      * Adds a dog in the repository only if it isn't a duplicate.
      * Input: dog - Dog.
-     * Return: True if it was added, False otherwise.
+     * Return: throws OperationException if it is a duplicate.
      */
-    bool add(const Dog& dog);
+    void add(const Dog& dog);
 
     /**
      * Removes a dog from the repository only if it is in the repository.
      * Input: dog - Dog.
-     * Return: True if it was deleted, False otherwise.
+     * Return: throws OperationException if the dog is not in the repository.
      */
-    bool remove(const Dog& dog);
+    void remove(const Dog& dog);
 
     /**
      * Updates a dog from the repository only if the dog is in the repository and if the updated dog is not a duplicate.
      * Input: dog, new_dog - Dog
-     * Return: -1 - if dog isn't in the repository.
-     *          0 - if new_dog is a duplicate.
-     *          1 - if it was updated.
+     * Return: throws OperationException if the dog is not in the repository or if the new dog is a duplicate.
      */
-    int update(const Dog& dog, const Dog& new_dog);
+    void update(const Dog& dog, const Dog& new_dog);
 
 private:
     std::vector<Dog> dogs;

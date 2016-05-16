@@ -4,23 +4,23 @@
 
 #include "ControllerAdmin.h"
 
-bool ControllerAdmin::add(int age, std::string breed, std::string name, std::string photo) {
+void ControllerAdmin::add(int age, std::string breed, std::string name, std::string photo) {
     Dog dog{age, breed, name, photo};
-    return this->repository.add(dog);
+    this->repository.add(dog);
 }
 
-bool ControllerAdmin::remove(int age, std::string breed, std::string name) {
+void ControllerAdmin::remove(int age, std::string breed, std::string name) {
     std::string str = "";
     Dog dog{age, breed, name, str};
-    return this->repository.remove(dog);
+    this->repository.remove(dog);
 }
 
-int ControllerAdmin::update(int age, std::string breed, std::string name, int new_age, std::string new_breed,
+void ControllerAdmin::update(int age, std::string breed, std::string name, int new_age, std::string new_breed,
                             std::string new_name, std::string new_photo) {
     std::string str = "";
     Dog dog{age, breed, name, str};
     Dog new_dog{new_age, new_breed, new_name, new_photo};
-    return this->repository.update(dog, new_dog);
+    this->repository.update(dog, new_dog);
 }
 
 std::vector<Dog> ControllerAdmin::get_all() {
