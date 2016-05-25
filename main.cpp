@@ -27,5 +27,6 @@ int main() {
     UI my_UI(my_ctrl_admin, my_ctrl_user);
 
     my_UI.run_UI();
+    delete adoption_list;
     return 0;
 }
